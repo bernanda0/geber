@@ -8,12 +8,17 @@
 
 /* Begin PBXBuildFile section */
 		995725C62BB8484A00E72253 /* geberApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995725C52BB8484A00E72253 /* geberApp.swift */; };
-		995725C82BB8484A00E72253 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995725C72BB8484A00E72253 /* ContentView.swift */; };
+		995725C82BB8484A00E72253 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995725C72BB8484A00E72253 /* HomeView.swift */; };
 		995725CA2BB8484B00E72253 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 995725C92BB8484B00E72253 /* Assets.xcassets */; };
 		995725CD2BB8484B00E72253 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 995725CC2BB8484B00E72253 /* Preview Assets.xcassets */; };
 		995725D72BB8484B00E72253 /* geberTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995725D62BB8484B00E72253 /* geberTests.swift */; };
 		995725E12BB8484B00E72253 /* geberUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995725E02BB8484B00E72253 /* geberUITests.swift */; };
 		995725E32BB8484B00E72253 /* geberUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995725E22BB8484B00E72253 /* geberUITestsLaunchTests.swift */; };
+		995725F32BB853A500E72253 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995725F22BB853A500E72253 /* Event.swift */; };
+		995725F52BB8555B00E72253 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995725F42BB8555B00E72253 /* HomeViewModel.swift */; };
+		995725F82BB8669B00E72253 /* SwiftyRedis in Frameworks */ = {isa = PBXBuildFile; productRef = 995725F72BB8669B00E72253 /* SwiftyRedis */; };
+		995725FC2BB8752C00E72253 /* SwiftRedis in Frameworks */ = {isa = PBXBuildFile; productRef = 995725FB2BB8752C00E72253 /* SwiftRedis */; };
+		995725FF2BB8808200E72253 /* Redis in Frameworks */ = {isa = PBXBuildFile; productRef = 995725FE2BB8808200E72253 /* Redis */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,7 +41,7 @@
 /* Begin PBXFileReference section */
 		995725C22BB8484A00E72253 /* geber.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = geber.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		995725C52BB8484A00E72253 /* geberApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = geberApp.swift; sourceTree = "<group>"; };
-		995725C72BB8484A00E72253 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		995725C72BB8484A00E72253 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		995725C92BB8484B00E72253 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		995725CC2BB8484B00E72253 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		995725D22BB8484B00E72253 /* geberTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = geberTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -44,6 +49,10 @@
 		995725DC2BB8484B00E72253 /* geberUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = geberUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		995725E02BB8484B00E72253 /* geberUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = geberUITests.swift; sourceTree = "<group>"; };
 		995725E22BB8484B00E72253 /* geberUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = geberUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		995725EF2BB84CEE00E72253 /* geber.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = geber.entitlements; sourceTree = "<group>"; };
+		995725F22BB853A500E72253 /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
+		995725F42BB8555B00E72253 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		995725F92BB8669D00E72253 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,6 +60,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				995725FF2BB8808200E72253 /* Redis in Frameworks */,
+				995725FC2BB8752C00E72253 /* SwiftRedis in Frameworks */,
+				995725F82BB8669B00E72253 /* SwiftyRedis in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -94,8 +106,11 @@
 		995725C42BB8484A00E72253 /* geber */ = {
 			isa = PBXGroup;
 			children = (
+				995725F92BB8669D00E72253 /* Info.plist */,
+				995725EF2BB84CEE00E72253 /* geber.entitlements */,
 				995725C52BB8484A00E72253 /* geberApp.swift */,
-				995725C72BB8484A00E72253 /* ContentView.swift */,
+				995725F12BB8527300E72253 /* Models */,
+				995725F02BB8526D00E72253 /* Views */,
 				995725C92BB8484B00E72253 /* Assets.xcassets */,
 				995725CB2BB8484B00E72253 /* Preview Content */,
 			);
@@ -127,6 +142,23 @@
 			path = geberUITests;
 			sourceTree = "<group>";
 		};
+		995725F02BB8526D00E72253 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				995725C72BB8484A00E72253 /* HomeView.swift */,
+				995725F42BB8555B00E72253 /* HomeViewModel.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		995725F12BB8527300E72253 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				995725F22BB853A500E72253 /* Event.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -143,6 +175,11 @@
 			dependencies = (
 			);
 			name = geber;
+			packageProductDependencies = (
+				995725F72BB8669B00E72253 /* SwiftyRedis */,
+				995725FB2BB8752C00E72253 /* SwiftRedis */,
+				995725FE2BB8808200E72253 /* Redis */,
+			);
 			productName = geber;
 			productReference = 995725C22BB8484A00E72253 /* geber.app */;
 			productType = "com.apple.product-type.application";
@@ -215,6 +252,11 @@
 				Base,
 			);
 			mainGroup = 995725B92BB8484A00E72253;
+			packageReferences = (
+				995725F62BB8669B00E72253 /* XCRemoteSwiftPackageReference "swifty-redis" */,
+				995725FA2BB8752C00E72253 /* XCRemoteSwiftPackageReference "Kitura-redis" */,
+				995725FD2BB8808200E72253 /* XCRemoteSwiftPackageReference "redis" */,
+			);
 			productRefGroup = 995725C32BB8484A00E72253 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -257,8 +299,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				995725C82BB8484A00E72253 /* ContentView.swift in Sources */,
+				995725C82BB8484A00E72253 /* HomeView.swift in Sources */,
+				995725F32BB853A500E72253 /* Event.swift in Sources */,
 				995725C62BB8484A00E72253 /* geberApp.swift in Sources */,
+				995725F52BB8555B00E72253 /* HomeViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -419,11 +463,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = geber/geber.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"geber/Preview Content\"";
+				DEVELOPMENT_TEAM = 5V847CY3JM;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = geber/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -434,7 +481,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.nurulhd.geber;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.nurulhd.geber-app";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -447,11 +494,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = geber/geber.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"geber/Preview Content\"";
+				DEVELOPMENT_TEAM = 5V847CY3JM;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = geber/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -462,7 +512,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.nurulhd.geber;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.nurulhd.geber-app";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -582,6 +632,51 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		995725F62BB8669B00E72253 /* XCRemoteSwiftPackageReference "swifty-redis" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/michaelvanstraten/swifty-redis.git";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+		995725FA2BB8752C00E72253 /* XCRemoteSwiftPackageReference "Kitura-redis" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Kitura/Kitura-redis.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.1.200;
+			};
+		};
+		995725FD2BB8808200E72253 /* XCRemoteSwiftPackageReference "redis" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/vapor/redis.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.10.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		995725F72BB8669B00E72253 /* SwiftyRedis */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 995725F62BB8669B00E72253 /* XCRemoteSwiftPackageReference "swifty-redis" */;
+			productName = SwiftyRedis;
+		};
+		995725FB2BB8752C00E72253 /* SwiftRedis */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 995725FA2BB8752C00E72253 /* XCRemoteSwiftPackageReference "Kitura-redis" */;
+			productName = SwiftRedis;
+		};
+		995725FE2BB8808200E72253 /* Redis */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 995725FD2BB8808200E72253 /* XCRemoteSwiftPackageReference "redis" */;
+			productName = Redis;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 995725BA2BB8484A00E72253 /* Project object */;
 }
