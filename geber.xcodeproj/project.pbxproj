@@ -16,9 +16,9 @@
 		995725E32BB8484B00E72253 /* geberUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995725E22BB8484B00E72253 /* geberUITestsLaunchTests.swift */; };
 		995725F32BB853A500E72253 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995725F22BB853A500E72253 /* Event.swift */; };
 		995725F52BB8555B00E72253 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995725F42BB8555B00E72253 /* HomeViewModel.swift */; };
-		995725F82BB8669B00E72253 /* SwiftyRedis in Frameworks */ = {isa = PBXBuildFile; productRef = 995725F72BB8669B00E72253 /* SwiftyRedis */; };
 		995725FC2BB8752C00E72253 /* SwiftRedis in Frameworks */ = {isa = PBXBuildFile; productRef = 995725FB2BB8752C00E72253 /* SwiftRedis */; };
-		995725FF2BB8808200E72253 /* Redis in Frameworks */ = {isa = PBXBuildFile; productRef = 995725FE2BB8808200E72253 /* Redis */; };
+		998F74392BB88D95007149CA /* SwiftyRedis in Frameworks */ = {isa = PBXBuildFile; productRef = 998F74382BB88D95007149CA /* SwiftyRedis */; };
+		998F747A2BB90BDA007149CA /* EnvManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 998F74792BB90BDA007149CA /* EnvManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +53,7 @@
 		995725F22BB853A500E72253 /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		995725F42BB8555B00E72253 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		995725F92BB8669D00E72253 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		998F74792BB90BDA007149CA /* EnvManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,9 +61,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				995725FF2BB8808200E72253 /* Redis in Frameworks */,
+				998F74392BB88D95007149CA /* SwiftyRedis in Frameworks */,
 				995725FC2BB8752C00E72253 /* SwiftRedis in Frameworks */,
-				995725F82BB8669B00E72253 /* SwiftyRedis in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -90,6 +90,7 @@
 				995725D52BB8484B00E72253 /* geberTests */,
 				995725DF2BB8484B00E72253 /* geberUITests */,
 				995725C32BB8484A00E72253 /* Products */,
+				998F74372BB88D95007149CA /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -112,6 +113,7 @@
 				995725F12BB8527300E72253 /* Models */,
 				995725F02BB8526D00E72253 /* Views */,
 				995725C92BB8484B00E72253 /* Assets.xcassets */,
+				998F74782BB90BCB007149CA /* Tools */,
 				995725CB2BB8484B00E72253 /* Preview Content */,
 			);
 			path = geber;
@@ -159,6 +161,21 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		998F74372BB88D95007149CA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		998F74782BB90BCB007149CA /* Tools */ = {
+			isa = PBXGroup;
+			children = (
+				998F74792BB90BDA007149CA /* EnvManager.swift */,
+			);
+			path = Tools;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -176,9 +193,8 @@
 			);
 			name = geber;
 			packageProductDependencies = (
-				995725F72BB8669B00E72253 /* SwiftyRedis */,
 				995725FB2BB8752C00E72253 /* SwiftRedis */,
-				995725FE2BB8808200E72253 /* Redis */,
+				998F74382BB88D95007149CA /* SwiftyRedis */,
 			);
 			productName = geber;
 			productReference = 995725C22BB8484A00E72253 /* geber.app */;
@@ -302,6 +318,7 @@
 				995725C82BB8484A00E72253 /* HomeView.swift in Sources */,
 				995725F32BB853A500E72253 /* Event.swift in Sources */,
 				995725C62BB8484A00E72253 /* geberApp.swift in Sources */,
+				998F747A2BB90BDA007149CA /* EnvManager.swift in Sources */,
 				995725F52BB8555B00E72253 /* HomeViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -661,20 +678,15 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		995725F72BB8669B00E72253 /* SwiftyRedis */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 995725F62BB8669B00E72253 /* XCRemoteSwiftPackageReference "swifty-redis" */;
-			productName = SwiftyRedis;
-		};
 		995725FB2BB8752C00E72253 /* SwiftRedis */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 995725FA2BB8752C00E72253 /* XCRemoteSwiftPackageReference "Kitura-redis" */;
 			productName = SwiftRedis;
 		};
-		995725FE2BB8808200E72253 /* Redis */ = {
+		998F74382BB88D95007149CA /* SwiftyRedis */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 995725FD2BB8808200E72253 /* XCRemoteSwiftPackageReference "redis" */;
-			productName = Redis;
+			package = 995725F62BB8669B00E72253 /* XCRemoteSwiftPackageReference "swifty-redis" */;
+			productName = SwiftyRedis;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

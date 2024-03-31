@@ -16,13 +16,19 @@ struct HomeView: View {
                 .imageScale(.large)
                 .foregroundStyle(.tint)
             Text(vm.events)
-            Button(action: vm.getValue) {
-                Text("Get Value")
+            Spacer().frame(height: 30)
+            Button(action: {
+                Task {
+                    await vm.expireKey()
+                }
+            }) {
+                Text("Expire the val")
             }
         }
         .task {
-            vm.setVal(input: "WKWWKWK")
+            await vm.connect()
         }
+
         .padding()
     }
 }
