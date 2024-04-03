@@ -7,13 +7,17 @@
 
 import Foundation
 
-struct Event {
-    let event_id: String
+struct Pet {
+    let name : String
+    
+}
+
+struct Event : Codable {
     let location: SectionLocation
     let timestamp: Date
 }
 
-enum SectionLocation {
+enum SectionLocation : Codable {
     case s1, s2, s3
 }
 

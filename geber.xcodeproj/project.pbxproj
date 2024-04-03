@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		992E6E2E2BBBC64F005B7E27 /* PushNotificationActor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 992E6E2D2BBBC64F005B7E27 /* PushNotificationActor.swift */; };
 		995725C62BB8484A00E72253 /* geberApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995725C52BB8484A00E72253 /* geberApp.swift */; };
 		995725C82BB8484A00E72253 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995725C72BB8484A00E72253 /* HomeView.swift */; };
 		995725CA2BB8484B00E72253 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 995725C92BB8484B00E72253 /* Assets.xcassets */; };
@@ -19,6 +20,8 @@
 		995725FC2BB8752C00E72253 /* SwiftRedis in Frameworks */ = {isa = PBXBuildFile; productRef = 995725FB2BB8752C00E72253 /* SwiftRedis */; };
 		998F74392BB88D95007149CA /* SwiftyRedis in Frameworks */ = {isa = PBXBuildFile; productRef = 998F74382BB88D95007149CA /* SwiftyRedis */; };
 		998F747A2BB90BDA007149CA /* EnvManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 998F74792BB90BDA007149CA /* EnvManager.swift */; };
+		998F747C2BB91275007149CA /* IBeaconManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 998F747B2BB91275007149CA /* IBeaconManager.swift */; };
+		998F747E2BB9137C007149CA /* DateUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 998F747D2BB9137C007149CA /* DateUtils.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,6 +42,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		992E6E2D2BBBC64F005B7E27 /* PushNotificationActor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotificationActor.swift; sourceTree = "<group>"; };
 		995725C22BB8484A00E72253 /* geber.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = geber.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		995725C52BB8484A00E72253 /* geberApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = geberApp.swift; sourceTree = "<group>"; };
 		995725C72BB8484A00E72253 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
@@ -54,6 +58,9 @@
 		995725F42BB8555B00E72253 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		995725F92BB8669D00E72253 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		998F74792BB90BDA007149CA /* EnvManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvManager.swift; sourceTree = "<group>"; };
+		998F747B2BB91275007149CA /* IBeaconManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IBeaconManager.swift; sourceTree = "<group>"; };
+		998F747D2BB9137C007149CA /* DateUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateUtils.swift; sourceTree = "<group>"; };
+		99BDDE362BBD0AF900BF1839 /* env.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = env.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +93,7 @@
 		995725B92BB8484A00E72253 = {
 			isa = PBXGroup;
 			children = (
+				99BDDE362BBD0AF900BF1839 /* env.xcconfig */,
 				995725C42BB8484A00E72253 /* geber */,
 				995725D52BB8484B00E72253 /* geberTests */,
 				995725DF2BB8484B00E72253 /* geberUITests */,
@@ -172,6 +180,9 @@
 			isa = PBXGroup;
 			children = (
 				998F74792BB90BDA007149CA /* EnvManager.swift */,
+				998F747B2BB91275007149CA /* IBeaconManager.swift */,
+				998F747D2BB9137C007149CA /* DateUtils.swift */,
+				992E6E2D2BBBC64F005B7E27 /* PushNotificationActor.swift */,
 			);
 			path = Tools;
 			sourceTree = "<group>";
@@ -319,7 +330,10 @@
 				995725F32BB853A500E72253 /* Event.swift in Sources */,
 				995725C62BB8484A00E72253 /* geberApp.swift in Sources */,
 				998F747A2BB90BDA007149CA /* EnvManager.swift in Sources */,
+				998F747E2BB9137C007149CA /* DateUtils.swift in Sources */,
 				995725F52BB8555B00E72253 /* HomeViewModel.swift in Sources */,
+				992E6E2E2BBBC64F005B7E27 /* PushNotificationActor.swift in Sources */,
+				998F747C2BB91275007149CA /* IBeaconManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -477,6 +491,7 @@
 		};
 		995725E72BB8484B00E72253 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 99BDDE362BBD0AF900BF1839 /* env.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -488,6 +503,9 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = geber/Info.plist;
+				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "";
+				INFOPLIST_KEY_NSBluetoothPeripheralUsageDescription = "";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -508,6 +526,7 @@
 		};
 		995725E82BB8484B00E72253 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 99BDDE362BBD0AF900BF1839 /* env.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -519,6 +538,9 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = geber/Info.plist;
+				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "";
+				INFOPLIST_KEY_NSBluetoothPeripheralUsageDescription = "";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

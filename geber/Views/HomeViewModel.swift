@@ -11,15 +11,19 @@ import SwiftRedis
 import Network
 
 final class HomeViewModel: ObservableObject {
-    @Published var events: String = ""
+    @Published var message: String = ""
+    @Published var current_key_event: String = ""
     
-//    using Kitura
+    private let default_msg = "READY TO CALL HELP"
+    private let currentKeyEventKey = "currentKeyEvent"
     private let redis = Redis()
-
-//    using SwiftyMerah
-    private let client = RedisClient(NWEndpoint.Host(EnvManager.shared.REDIS_HOST), username: EnvManager.shared.REDIS_USER, password: EnvManager.shared.REDIS_PASS)
     
     init() {
+        
+        if let storedKey = UserDefaults.standard.string(forKey: currentKeyEventKey) {
+            current_key_event = storedKey
+        }
+        
         redis.connect(host: EnvManager.shared.REDIS_HOST, port: 6379) { (redisError: NSError?) in
             if let error = redisError {
                 print(error)
@@ -31,36 +35,18 @@ final class HomeViewModel: ObservableObject {
                         print(error)
                     }
                     
-                    updateMessage(msg: "Redis connection established")
+                    getValue(key: current_key_event)
                 }
                 
             }
         }
     }
     
-    func connect() async {
-        do {
-            let a = try await client.get_pub_sub_connection()
-            try await a.psubscribe("__key*__:*")
-            let messageStream = await a.messages()
-            
-            Task.init {
-                do {
-                    for await _ in messageStream {
-                        await MainActor.run {
-                            getValue()
-                        }
-                        
-                    }
-                }
-            }
-        } catch {
-            print("\(error)")
-        }
+    private func saveCurrentKeyEvent() {
+        UserDefaults.standard.set(current_key_event, forKey: currentKeyEventKey)
     }
     
     func setVal(input: String) {
-        // Set a key
         redis.set("Redis", value: input) { (result: Bool, redisError: NSError?) in
             if let error = redisError {
                 print(error)
@@ -73,32 +59,62 @@ final class HomeViewModel: ObservableObject {
     }
     
     
-    func getValue(){
-        redis.get("Redis") { (string: RedisString?, redisError: NSError?) in
-                        if let error = redisError {
-                            print(error)
-                        }
-                        else if let string = string?.asString {
-                            updateMessage(msg: string)
-                        } else {
-                            updateMessage(msg: "EMPTY")
-                        }
+    func getValue(key: String){
+        redis.hget(key, field: "event_data") { (string: RedisString?, redisError: NSError?) in
+            if let error = redisError {
+                print(error)
+            }
+            else if let string = string?.asString {
+                updateMessage(msg: string)
+            } else {
+                updateMessage(msg: default_msg)
+            }
         }
-        
     }
     
     func updateMessage(msg: String) {
-        events = msg
+        message = msg
     }
     
-    func expireKey() async {
+    func expireHelp(key: String) {
+        redis.expire(key, inTime: 0) { (success: Bool, err: NSError?) in
+            if let error = err {
+                print(error)
+            } else {
+                if (success) {
+                    current_key_event = ""
+                    saveCurrentKeyEvent()
+                    updateMessage(msg: default_msg)
+                }
+            }
+        }
+    }
+    
+    func getHelp() {
         do {
-            let b = try await client.get_connection()
+            let event = Event(location: SectionLocation.s1, timestamp: Date())
+            let timeInterval = Int(event.timestamp.timeIntervalSince1970)
+            let key = "\(event.location)_event_\(timeInterval)"
             
-            try await b.expire("Redis", 0)
+            let jsonData = try JSONEncoder().encode(event)
+            let jsonString = String(data: jsonData, encoding: .utf8)
+            
+            redis.hset(key, field: "event_data", value: jsonString!){ (result: Bool, redisError: NSError?) in
+                if let error = redisError {
+                    print(error)
+                }
+                
+                else {
+                    current_key_event = key
+                    saveCurrentKeyEvent()
+                    PushNotificationActor.pushNotification(loc: "\(event.location)")
+                    getValue(key: key)
+                }
+            }
+            
         } catch {
             
         }
-       
+        
     }
 }
