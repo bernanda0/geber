@@ -14,7 +14,7 @@ final class HomeViewModel: ObservableObject {
     @Published var message: String = ""
     @Published var current_key_event: String = ""
     
-    private let default_msg = "READY TO CALL HELP"
+    private let default_msg = "🗣️🗣️🗣️"
     private let currentKeyEventKey = "currentKeyEvent"
     private let redis = Redis()
     
@@ -90,9 +90,22 @@ final class HomeViewModel: ObservableObject {
         }
     }
     
-    func getHelp() {
+    func getHelp(minor: NSNumber) {
         do {
-            let event = Event(location: SectionLocation.s1, timestamp: Date())
+            var loc: SectionLocation
+            
+            if minor.intValue == 0 {
+                loc = SectionLocation.s1
+            } else if minor.intValue == 1 {
+                loc = SectionLocation.s2
+            } else if minor.intValue == 2 {
+                loc = SectionLocation.s3
+            } else {
+                return
+            }
+            
+            
+            let event = Event(location: loc, timestamp: Date())
             let timeInterval = Int(event.timestamp.timeIntervalSince1970)
             let key = "\(event.location)_event_\(timeInterval)"
             

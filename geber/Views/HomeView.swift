@@ -8,43 +8,56 @@
 import SwiftUI
 
 struct HomeView: View {
-    @StateObject var vm = HomeViewModel()
-    @StateObject var b = IBeaconManager()
+    @StateObject var homeViewModel = HomeViewModel()
+    @StateObject var beaconManager = IBeaconManager()
+    
+    
+    let location = [
+        0: "Detected in S1",
+        1: "Detected in S2",
+        2: "Detected in S3"
+    ]
     
     let colors = [
-        -1: Color.white,
-        0: Color.blue,
-        1: Color.red,
-        2: Color.green
+        -1: Color.black,
+         0: Color.red,
+        1: Color.green,
+        2: Color.blue
     ]
+    
     var body: some View {
         VStack {
             Image(systemName: "globe")
                 .imageScale(.large)
                 .foregroundStyle(.tint)
-            Text(vm.message)
-            if b.distance == .unknown {
+            
+            Text(location[Int(truncating: beaconManager.minor)] ?? "You're not detected in the parking area")
+            if beaconManager.distance == .unknown {
                 Text("UNKNOWN")
-            } else if b.distance == .near {
+            } else if beaconManager.distance == .near {
                 Text("NEAR")
-            } else if b.distance == .immediate {
+            } else if beaconManager.distance == .immediate {
                 Text("HEREEE!")
             } else {
                 Text("FAR")
             }
             Spacer().frame(height: 30)
-            if vm.current_key_event.isEmpty {
+            
+            Text(homeViewModel.message)
+            Spacer().frame(height: 12)
+            
+            if homeViewModel.current_key_event.isEmpty {
                 Button(action: {
                     Task {
-                        vm.getHelp()
+                        homeViewModel.getHelp(minor: beaconManager.minor)
                     }
                 }) {
                     Text("Get Help")
-                }
+                }.buttonStyle(.bordered).disabled(beaconManager.minor == -1)
             } else {
                 Button(action: {
                     Task {
-                        vm.expireHelp(key: vm.current_key_event)
+                        homeViewModel.expireHelp(key: homeViewModel.current_key_event)
                     }
                 }) {
                     Text("Done")
@@ -54,9 +67,8 @@ struct HomeView: View {
         .task {
             //            await vm.connect()
         }
-        
         .padding()
-        .background(colors[Int(truncating: b.minor)])
+        .background(colors[Int(truncating: beaconManager.minor)])
         
     }
 }

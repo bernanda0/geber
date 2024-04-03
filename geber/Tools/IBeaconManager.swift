@@ -52,25 +52,26 @@ class IBeaconManager : NSObject, ObservableObject, CLLocationManagerDelegate {
         let uuid = UUID(uuidString: EnvManager.shared.BEACON_UUID)!
         let beaconConstraint = CLBeaconIdentityConstraint(uuid: uuid, major: 0)
         let beaconRegion = CLBeaconRegion(beaconIdentityConstraint: beaconConstraint, identifier: "Parkiran")
-        
-        print(beaconRegion)
+    
         locationManager.startMonitoring(for: beaconRegion)
         locationManager.startRangingBeacons(satisfying: beaconConstraint)
     }
     
     func update(distance: CLProximity, minor: NSNumber) {
-        print("\(distance.rawValue)")
         self.distance = distance
         self.minor = minor
         exists.send(())
     }
     
     func locationManager(_ manager: CLLocationManager, didRange beacons: [CLBeacon], satisfying beaconConstraint: CLBeaconIdentityConstraint) {
-        let knownBeacons = beacons.filter{ $0.proximity != CLProximity.unknown }
+        let knownBeacons = beacons.filter{ $0.proximity != CLProximity.unknown && [0, 1, 2].contains($0.minor)}
         if (knownBeacons.count > 0) {
             let closestBeacon = knownBeacons [0] as CLBeacon
             update(distance: closestBeacon.proximity, minor: closestBeacon.minor)
+            return
         }
+        
+        update(distance: .unknown, minor: -1)
     }
     
 }
